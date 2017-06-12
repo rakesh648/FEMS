@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<form class="form-horizontal" name="newOwnerForm"  ng-submit="$ctrl.saveNewOwner()" >
+   <div class="form-group" ng-class="{ 'has-error' : newOwnerForm.ownerName.$invalid && newOwnerForm.ownerName.$touched }">
+      <label class="control-label col-sm-2">Name : </label>
+      <div class="col-sm-6" >
+         <input class="form-control" name ="ownerName" type="text" maxlength="50" ng-model="$ctrl.owner.owner.name" placeholder="Your Name here" required>
+         <p ng-show="newOwnerForm.ownerName.$invalid && newOwnerForm.ownerName.$touched" class="help-block">Your name is required</p>
+      </div>
+   </div>
+   <div class="form-group" ng-class="{ 'has-error' : newOwnerForm.email.$invalid && newOwnerForm.email.$touched }">
+      <label class="control-label col-sm-2">Email :</label>
+      <div class="col-sm-6">
+         <input class="form-control" name ="email" type="email" maxlength="50" ng-model="$ctrl.owner.owner.email" placeholder="example@f11corp.com" required>
+         <p ng-show="newOwnerForm.email.$invalid && newOwnerForm.email.$touched" class="help-block">Enter a valid email address</p>
+      </div>
+   </div>
+   <div class="form-group" ng-class="{ 'has-error' : newOwnerForm.phone.$invalid && newOwnerForm.phone.$touched }">
+      <label class="control-label col-sm-2">Phone :</label>
+      <div class="col-sm-6">
+         <input  class="form-control" name = "phone" type="number" min="1111111111" max="9999999999" ng-model="$ctrl.owner.owner.phone" placeholder="Your Phone Number" required>
+         <p ng-show="newOwnerForm.phone.$invalid && newOwnerForm.phone.$touched" class="help-block">Enter a valid phone number</p>
+      </div>
+   </div>
+   <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+         <input type="submit" class="btn btn-primary" ng-disabled="saveDisabled" value="Save"/>
+      </div>
+   </div>
+</form>

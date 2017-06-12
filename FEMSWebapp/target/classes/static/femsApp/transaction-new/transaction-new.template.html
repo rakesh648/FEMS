@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<form class="form-horizontal" name="newTransactionForm" ng-submit="$ctrl.saveNewTransaction()">
+   <div class="panel-group ">
+      <div class="panel col-sm-6">
+         <div class="form-group required" ng-class="{ 'has-error' : newTransactionForm.fund.$invalid && newTransactionForm.fund.$touched }">
+            <label class="control-label col-sm-4"> Fund :</label>
+            <div class="col-sm-6">
+               <select class="form-control" 
+               	  name="fund"
+                  ng-model="$ctrl.transaction.fund"  
+                  ng-options="fund.fund as fund.fund.owner.name +'-'+fund.fund.fundSource+'-'+fund.fund.amount+'('+fund.fund.available+')' for fund in $ctrl.funds" 
+                  required>
+                  <option value="" selected data-default>Select one...</option>
+               </select>
+               <p ng-show="newTransactionForm.fund.$invalid && newTransactionForm.fund.$touched" class="help-block">Please make a choice</p>
+            </div>
+         </div>
+         <div class="form-group" ng-class="{ 'has-error' : newTransactionForm.amount.$invalid && newTransactionForm.amount.$touched }">
+            <label class="control-label col-sm-4">Amount : </label>
+            <div class="col-sm-6">
+               <input class="form-control" name="amount" type="number" min="1" max="{{$ctrl.transaction.fund.available}}" ng-model="$ctrl.transaction.amount" 
+               placeholder="E.g 1111" required>
+               <p ng-show="newTransactionForm.amount.$invalid && newTransactionForm.amount.$touched" class="help-block">Enter valid number between 1 and {{$ctrl.transaction.fund.available}} )</p>
+            </div>
+         </div>
+         <div class="form-group" ng-class="{ 'has-error' : newTransactionForm.transactionDate.$invalid && newTransactionForm.transactionDate.$touched }">
+            <label class="control-label col-sm-4">Date :</label>
+            <div class="col-sm-6">
+               <input class="form-control"  type="date" name="transactionDate" ng-model="$ctrl.transaction.transactionDate"   
+               min="2016-01-01" max="2018-12-31" required />
+               <p ng-show="newTransactionForm.transactionDate.$invalid && newTransactionForm.transactionDate.$touched" class="help-block">Please enter a valid date</p>
+            </div>
+         </div>
+         <div class="form-group" ng-class="{ 'has-error' : newTransactionForm.receiver.$invalid && newTransactionForm.receiver.$touched }">
+            <label class="control-label col-sm-4">Receiver :</label>
+            <div class="col-sm-6">
+               <input class="form-control" name="receiver" type="text" ng-model="$ctrl.transaction.receiver" maxlength="30" placeholder="E.g Ramesh" required> 
+               <p ng-show="newTransactionForm.receiver.$invalid && newTransactionForm.receiver.$touched" class="help-block">Please enter a valid receiver</p>
+            </div>
+         </div>
+         <div class="form-group" ng-class="{ 'has-error' : newTransactionForm.category.$invalid && newTransactionForm.category.$touched }">
+            <label class="control-label col-sm-4">Category :</label>
+            <div class="col-sm-6">
+               <select class="form-control"
+               	  name ="category" 
+                  ng-model="$ctrl.transaction.category"  
+                  ng-options="category.key as category.value for category in $ctrl.transactionCategories" 
+                  required>
+                <option value="" selected data-default>Select one...</option>
+               </select>
+               <p ng-show="newTransactionForm.category.$invalid && newTransactionForm.category.$touched" class="help-block">Please make a choice</p>
+            </div>
+         </div>
+         <div class="form-group" ng-class="{ 'has-error' : newTransactionForm.buildingArea.$invalid && newTransactionForm.buildingArea.$touched }">
+            <label class="control-label col-sm-4">Building Area :</label>
+            <div class="col-sm-6">
+               <select class="form-control" 
+                  name="buildingArea"
+                  ng-model="$ctrl.transaction.buildingArea"  
+                  ng-options="buildingArea.key as buildingArea.value for buildingArea in $ctrl.buildingAreas" 
+                  required>
+               <option value="" selected data-default>Select one...</option>
+               </select>
+               <p ng-show="newTransactionForm.buildingArea.$invalid && newTransactionForm.buildingArea.$touched" class="help-block">Please make a choice</p>
+            </div>
+         </div>
+         <div class="form-group" ng-class="{ 'has-error' : newTransactionForm.authorizedBy.$invalid && newTransactionForm.authorizedBy.$touched }">
+            <label class="control-label col-sm-4"> Authorized By :</label>
+            <div class="col-sm-6">
+               <input  class="form-control" name="authorizedBy" type="text" maxlegth="50" ng-model="$ctrl.transaction.AuthorizedBy.id"
+               required>
+               <p ng-show="newTransactionForm.authorizedBy.$invalid && newTransactionForm.authorizedBy.$touched" class="help-block">Please enter a valid receiver</p>
+            </div>
+         </div>	
+         <div class="form-group" ng-class="{ 'has-error' : newTransactionForm.transationStatus.$invalid && newTransactionForm.transationStatus.$touched }">
+            <label class="control-label col-sm-4">Status :</label>
+            <div class="col-sm-6">
+               <select class="form-control" 
+               	  name="transationStatus"
+                  ng-model="$ctrl.transaction.status"  
+                  ng-options="status.key as status.value for status in $ctrl.transactionStatuses" 
+                  required>
+               <option value="" selected data-default>Select one...</option>
+               </select>
+               <p ng-show="newTransactionForm.transationStatus.$invalid && newTransactionForm.transationStatus.$touched" class="help-block">Please make a choice</p>
+            </div>
+         </div>
+      </div>
+      <!-- end of pane1 -->
+      <div class="panel col-sm-6">
+         <div class="form-group" ng-class="{ 'has-error' : newTransactionForm.type.$invalid && newTransactionForm.type.$touched }">
+            <label class="control-label col-sm-4">Type : </label>
+            <div class="col-sm-6">
+               <select class="form-control" 
+                 name="type"
+                  ng-model="$ctrl.transaction.transactionType"  
+                  ng-options="transactionType.key as transactionType.value for transactionType in $ctrl.transactionTypes" 
+                  required>
+               <option value="" selected data-default>Select one...</option>
+               </select>
+               <p ng-show="newTransactionForm.type.$invalid && newTransactionForm.type.$touched" class="help-block">Please make a choice</p>
+            </div>
+         </div>
+         <div class="form-group" ng-class="{ 'has-error' : newTransactionForm.bank.$invalid && newTransactionForm.bank.$touched }">
+            <label class="control-label col-sm-4" >Bank :</label>
+            <div class="col-sm-6">
+               <input  class="form-control" name="bank" type="text" ng-model="$ctrl.transaction.bank" maxlength="50" placeholder="E.g ICIC Bank" ng-disabled="$ctrl.isBankDisabled()">
+               <p ng-show="newTransactionForm.bank.$invalid && newTransactionForm.bank.$touched" class="help-block">Please enter a valid bank</p>
+            </div>
+         </div>
+         <div class="form-group" ng-class="{ 'has-error' : newTransactionForm.chqueDate.$invalid && newTransactionForm.chqueDate.$touched }">
+            <label class="control-label col-sm-4"> Cheque Date :</label>
+            <div class="col-sm-6">
+               <input class="form-control" name="chqueDate" type="date" ng-model="$ctrl.transaction.chequeDate" min="2016-01-01" max="2018-12-31"  
+                  ng-disabled="$ctrl.isChequeFieldsDisabled()" > 
+                  <p ng-show="newTransactionForm.chqueDate.$invalid && newTransactionForm.chqueDate.$touched" class="help-block">Please enter a valid date</p>
+            </div>
+         </div>
+         <div class="form-group" ng-class="{ 'has-error' : newTransactionForm.chequeNumber.$invalid && newTransactionForm.chequeNumber.$touched }">
+            <label class="control-label col-sm-4"> Cheque Number :</label>
+            <div class="col-sm-6">
+               <input class="form-control" name="chequeNumber" type="number" ng-model="$ctrl.transaction.chequeNumber" min="1" max="99999999999" placeholder="E.g 123456" ng-disabled="$ctrl.isChequeFieldsDisabled()">
+               <p ng-show="newTransactionForm.chequeNumber.$invalid && newTransactionForm.chequeNumber.$touched" class="help-block">Please enter a valid number</p>
+            </div>
+         </div>
+         <div class="form-group" ng-class="{ 'has-error' : newTransactionForm.chequeTo.$invalid && newTransactionForm.chequeTo.$touched }">
+            <label class="control-label col-sm-4"> Cheque To :</label>
+            <div class="col-sm-6">
+               <input class="form-control" name="chequeTo" type="text" ng-model="$ctrl.transaction.chequeTo" maxlenght="50" placeholder="E.g Ramesh" ng-disabled="$ctrl.isChequeFieldsDisabled()">
+               <p ng-show="newTransactionForm.chequeTo.$invalid && newTransactionForm.chequeTo.$touched" class="help-block">*Invalid</p> 
+            </div>
+         </div>
+         <div class="form-group" ng-class="{ 'has-error' : newTransactionForm.deductedDate.$invalid && newTransactionForm.deductedDate.$touched }">
+            <label class="control-label col-sm-4"> Deducted Date :</label>
+            <div class="col-sm-6">
+               <input class="form-control" name="deductedDate" type="date" min="2016-01-01" max="2018-12-31" ng-model="$ctrl.transaction.deductedOn" ng-disabled="$ctrl.isDeductedOnFieldsDisabled()">
+               <p ng-show="newTransactionForm.deductedDate.$invalid && newTransactionForm.deductedDate.$touched" class="help-block">Please enter a valid date</p>
+            </div>
+         </div>
+         <div class="form-group">
+            <label class="control-label col-sm-4">Remarks :</label>
+            <div class="col-sm-6">
+               <textarea class="form-control" name="remark" rows="5" maxlength="200" ng-model="$ctrl.transaction.remarks" placeholder="Any remarks?"></textarea>
+               <p ng-show="newTransactionForm.remark.$invalid && newTransactionForm.remark.$touched" class="help-block">*Invalid</p>
+            </div>
+         </div>
+         <div class="form-group">
+            <div class="col-sm-10">
+               <input type="submit" value="Save"  ng-disabled="saveDisabled" class="btn btn-primary" />
+            </div>
+         </div>
+      </div>
+   </div>
+</form>

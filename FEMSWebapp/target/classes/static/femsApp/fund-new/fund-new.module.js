@@ -1,0 +1,1 @@
+angular.module('fundNew', ['fundListService','ownerListService','fundSourceService','ngRoute']);

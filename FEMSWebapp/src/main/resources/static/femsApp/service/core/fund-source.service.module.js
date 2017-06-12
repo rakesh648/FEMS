@@ -1,0 +1,1 @@
+angular.module('fundSourceService', ['ngResource','ngRoute']);

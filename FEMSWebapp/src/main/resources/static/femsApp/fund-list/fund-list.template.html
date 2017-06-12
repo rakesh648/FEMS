@@ -1,0 +1,22 @@
+
+ <table class="table  table-hover table-bordered table-striped">
+  <thead>
+      <tr>
+        <th>Amount</th>
+        <th>Manager</th>
+        <th>Source</th>
+        <th>Remarks</th>
+        <!--<th>Available From</th>  -->      
+      </tr>
+       </thead>
+      
+      	<tr ng-repeat="fund in $ctrl.funds | orderBy:$ctrl.orderProp"  >
+		    <td> <a href="#!/funds/{{fund.fund.id}}"> {{fund.fund.amount}} </a> </td>
+		    <td> <a href="#!/owners/{{fund.fund.owner.id}}"> {{fund.fund.owner.name}} </td>
+		    <td> {{fund.fund.fundSource}} </td>
+		    <!-- <td> <p>{{fund.fund.availableFrom}}</p> </td> -->
+		    <td> {{fund.fund.remarks}} </td> 
+		  </tr>
+   </table>
+		
+<button type="button" ng-click="$ctrl.createNewFund()" class="btn btn-primary">New</button>

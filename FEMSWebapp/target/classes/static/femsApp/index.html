@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en" ng-app ="femsApp">
+<head>
+ <meta charset="utf-8"> 
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Let's Track</title>
+
+<!--  Bootstrap -->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- End of Bootstrap -->
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ng2-bootstrap/1.6.2/ng2-bootstrap.umd.min.js"></script> -->
+<script src="../femsApp/core/angular/angular.min.js"></script> 
+<script src="../femsApp/core/angular/angular-route.js"></script>
+<script src="../femsApp/core/angular/angular-resource.js"></script> 
+<script src="../femsApp/env.js"></script>
+<script src="../femsApp/femsApp.js"></script>
+<script src="../femsApp/femsApp.config.js"></script>  
+<script src="../femsApp/core/menu/menu-list.module.js"></script> 
+<script src="../femsApp/core/menu/menu-list.component.js"></script>
+
+
+<script src="../femsApp/service/owners/owner-list.service.module.js"></script>
+<script src="../femsApp/service/owners/owner-list.service.js"></script>  
+<script src="../femsApp/owner-list/owner-list.module.js"></script> 
+<script src="../femsApp/owner-list/owner-list.component.js"></script> 
+
+<script src="../femsApp/service/owners/owner-detail.service.module.js"></script>
+<script src="../femsApp/service/owners/owner-detail.service.js"></script>  
+<script src="../femsApp/owner-detail/owner-detail.module.js"></script> 
+<script src="../femsApp/owner-detail/owner-detail.component.js"></script> 
+
+<script src="../femsApp/owner-new/owner-new.module.js"></script> 
+<script src="../femsApp/owner-new/owner-new.component.js"></script> 
+
+<script src="../femsApp/service/funds/fund-list.service.module.js"></script>
+<script src="../femsApp/service/funds/fund-list.service.js"></script>  
+<script src="../femsApp/fund-list/fund-list.module.js"></script> 
+<script src="../femsApp/fund-list/fund-list.component.js"></script>  
+
+<script src="../femsApp/service/funds/fund-detail.service.module.js"></script>
+<script src="../femsApp/service/funds/fund-detail.service.js"></script>  
+<script src="../femsApp/fund-detail/fund-detail.module.js"></script> 
+<script src="../femsApp/fund-detail/fund-detail.component.js"></script> 
+
+<script src="../femsApp/fund-new/fund-new.module.js"></script> 
+<script src="../femsApp/fund-new/fund-new.component.js"></script> 
+
+<script src="../femsApp/service/transactions/transaction-list.service.module.js"></script>
+<script src="../femsApp/service/transactions/transaction-list.service.js"></script>  
+<script src="../femsApp/transaction-list/transaction-list.module.js"></script> 
+<script src="../femsApp/transaction-list/transaction-list.component.js"></script>  
+
+<script src="../femsApp/service/transactions/transaction-detail.service.module.js"></script>
+<script src="../femsApp/service/transactions/transaction-detail.service.js"></script>  
+<script src="../femsApp/transaction-detail/transaction-detail.module.js"></script> 
+<script src="../femsApp/transaction-detail/transaction-detail.component.js"></script>
+
+<script src="../femsApp/transaction-new/transaction-new.module.js"></script> 
+<script src="../femsApp/transaction-new/transaction-new.component.js"></script> 
+
+<script src="../femsApp/service/core/fund-source.service.module.js"></script>
+<script src="../femsApp/service/core/fund-source.service.js"></script> 
+<script src="../femsApp/service/core/transaction-type.service.module.js"></script>
+<script src="../femsApp/service/core/transaction-type.service.js"></script> 
+
+<script src="../femsApp/service/core/transaction-status.service.module.js"></script>
+<script src="../femsApp/service/core/transaction-status.service.js"></script> 
+
+<script src="../femsApp/service/core/transaction-category.service.module.js"></script>
+<script src="../femsApp/service/core/transaction-category.service.js"></script> 
+
+<script src="../femsApp/service/core/building-area.service.module.js"></script>
+<script src="../femsApp/service/core/building-area.service.js"></script> 
+
+<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<!-- <link href="css/angular-bootstrap.css" rel="stylesheet"> --> 
+<style type="text/css">
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+</style>
+</head>
+
+<body>
+	<div class="container-fluid" class= "center">
+		<div class="page-header">
+	 		<h1>Let's Track</h1> 
+		</div> 
+		<div class="panel panel-default">
+  			<div class="panel-body">
+    			<menu-list></menu-list>
+    		</div>
+    	</div>
+    	<div class="panel panel-default">
+  			<div class="panel-body">
+				<div ng-view></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

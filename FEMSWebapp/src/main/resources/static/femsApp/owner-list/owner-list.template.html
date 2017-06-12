@@ -1,0 +1,18 @@
+
+ <table class="table table-hover table-bordered table-striped">
+  <thead>
+      <tr>
+        <th>Name</th>
+        <th>E-Mail</th>
+        <th>Phone</th>
+      </tr>
+       </thead>
+      
+      	<tr ng-repeat="owner in $ctrl.owners | orderBy:$ctrl.orderProp"   >
+		    <td> <a href="#!/owners/{{owner.owner.id}}">{{owner.owner.name}}</a> </td>
+		    <td> <p>{{owner.owner.email}}</p> </td>
+		    <td> <p>{{owner.owner.phone}}</p> </td>
+		  </tr>
+   </table>
+
+<button type="button" ng-click="$ctrl.createNewOwner()" class="btn btn-primary">New</button>

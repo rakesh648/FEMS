@@ -1,0 +1,1 @@
+angular.module('ownerDetailService', ['ngResource','ngRoute']);

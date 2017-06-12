@@ -2,7 +2,7 @@
 (function (window) {
   window.__env = window.__env || {};
   //window.__env.apiUrl = 'http://10.51.84.76:8200';
-  window.__env.apiUrl = 'http://192.168.0.3:8200';
+  window.__env.apiUrl = 'http://192.168.0.4:8200';
   //window.__env.apiUrl = 'http://localhost:8200';
   
   window.__env.ownerListApiUrl = window.__env.apiUrl+'/owners';

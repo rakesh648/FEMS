@@ -1,7 +1,7 @@
 
 (function (window) {
   window.__env = window.__env || {};
-  window.__env.apiUrl = 'http://192.168.0.5:8200';
+  window.__env.apiUrl = 'http://192.168.0.5:8020';
   //window.__env.apiUrl = 'https://femsproddb.appspot.com';
   
   window.__env.ownerListApiUrl = window.__env.apiUrl+'/owners';

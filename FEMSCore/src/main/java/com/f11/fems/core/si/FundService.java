@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Optional;
 
 import com.f11.fems.core.entity.Fund;
+import com.f11.fems.core.util.FundSummaryVo;
 
 public interface FundService{
 
@@ -11,4 +12,5 @@ public interface FundService{
 	Collection<Fund> findAll();	
 	void save(Fund t);	
 	Collection<Fund> getOwnersFunds(Long ownerId);
+	Collection<FundSummaryVo> getSummary();
 }

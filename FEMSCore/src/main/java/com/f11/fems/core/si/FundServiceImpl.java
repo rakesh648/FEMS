@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.f11.fems.core.dao.FundDao;
 import com.f11.fems.core.entity.Fund;
 import com.f11.fems.core.entity.Owner;
+import com.f11.fems.core.util.FundSummaryVo;
 
 @Service
 public class FundServiceImpl implements FundService {
@@ -41,6 +42,11 @@ public class FundServiceImpl implements FundService {
 		Owner owner =new Owner();
 		owner.setId(ownerId);
 		return fundRepo.findByOwner(owner);
+	}
+
+	@Override
+	public Collection<FundSummaryVo> getSummary() {
+		return fundRepo.getSummary();
 	}
 	
 }

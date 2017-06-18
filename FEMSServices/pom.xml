@@ -1,98 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-
-	<groupId>com.f11.fems</groupId>
-	<artifactId>f11-fems-services</artifactId>
-	<packaging>jar</packaging>
-
-	<name>services</name>
-	<description>FEMS Web Service Project</description>
-
-
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   
+   <modelVersion>4.0.0</modelVersion>
+    <groupId>com.f11.fems</groupId>
+    <artifactId>f11-fems-services</artifactId>
+    <packaging>jar</packaging>
+    <name>FEMS Services</name>
+    <description>FEMS Web Service Project</description>
+    
 	<parent>
-		<groupId>com.f11</groupId>
-		  <artifactId>fems</artifactId>
- 		 <version>0.0.1-SNAPSHOT</version>
-	</parent>
-
+        <groupId>com.f11</groupId>
+        <artifactId>fems</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
-		<m2e.apt.activation>jdt_apt</m2e.apt.activation>
-		<org.mapstruct.version>1.1.0.Final</org.mapstruct.version>
-	</properties>
-
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-hateoas</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-			
-		<dependency>
-			<groupId>com.f11.fems</groupId>
-			<artifactId>f11-fems-core</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		
-    	<dependency>
-        	<groupId>org.springframework.boot</groupId>
-        	<artifactId>spring-boot-devtools</artifactId>
-        	<optional>true</optional>
-    	</dependency>
-    	
-    	<dependency>
-		    <groupId>org.mapstruct</groupId>
-		    <artifactId>mapstruct-jdk8</artifactId>
-		    <version>${org.mapstruct.version}</version> 
-		</dependency>
-    	
-	</dependencies>
-
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <m2e.apt.activation>jdt_apt</m2e.apt.activation>
+        <org.mapstruct.version>1.1.0.Final</org.mapstruct.version>    
+    </properties>
+   
+   <dependencies>                   
+        <dependency>
+            <groupId>com.google.appengine</groupId>
+            <artifactId>appengine-api-1.0-sdk</artifactId>
+            <version>1.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.api-client</groupId>
+            <artifactId>google-api-client-appengine</artifactId>
+            <version>1.22.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.servlet</groupId>
+                    <artifactId>servlet-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-hateoas</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.f11.fems</groupId>
+            <artifactId>f11-fems-core</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-jdk8</artifactId>
+            <version>${org.mapstruct.version}</version>
+        </dependency>
+    </dependencies>
+    
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			
-			<plugin>
-			    <groupId>org.apache.maven.plugins</groupId>
-			    <artifactId>maven-compiler-plugin</artifactId>
-			    <configuration>
-			        <source>1.8</source>
-			    <target>1.8</target>
-			    <annotationProcessorPaths>
-			            <path>
-			                <groupId>org.mapstruct</groupId>
-			                <artifactId>mapstruct-processor</artifactId>
-			                <version>${org.mapstruct.version}</version>
-			            </path>
-			        </annotationProcessorPaths>
-			    </configuration>
-			    
-			</plugin>
-						
-			<plugin>
-		        <groupId>com.google.cloud.tools</groupId>
-		        <artifactId>appengine-maven-plugin</artifactId>
-		        <version>1.2.1</version>
-		      </plugin>
-		      
-		</plugins>
-	</build>
-
-
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${org.mapstruct.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>appengine-maven-plugin</artifactId>
+                <version>1.2.1</version>
+            </plugin>
+        </plugins>
+    </build>
+	
 </project>

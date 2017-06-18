@@ -24,6 +24,7 @@ import com.f11.fems.core.entity.Owner;
 import com.f11.fems.core.entity.type.FundSource;
 import com.f11.fems.core.si.FundService;
 import com.f11.fems.core.si.OwnerService;
+import com.f11.fems.core.util.FundSummaryVo;
 import com.f11.fems.service.exceptions.BadRequestException;
 import com.f11.fems.service.exceptions.MandatoryFieldsMissingException;
 import com.f11.fems.service.exceptions.ResourceNotFoundException;
@@ -138,6 +139,15 @@ public class FundServiceControler {
 		}
 		return sources;
 	  }
+	
+	
+	@RequestMapping(value = "funds/summary", method = RequestMethod.GET, 
+	produces = {"application/json", "application/xml" })
+	@ResponseBody
+	@ResponseStatus(HttpStatus.OK)
+	public Collection<FundSummaryVo> getFundSummary() {		
+		return fundService.getSummary();
+	}
 	
 	private static void addCommonLinks(FundResource fundResource){
 		 Fund fund = fundResource.getFund();

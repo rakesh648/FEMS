@@ -3,6 +3,6 @@
   <application>femsproddb</application>
   <version>alpha-001</version>
   <threadsafe>true</threadsafe>
-  <service>webapi</service>
+  <module>webapi</module>
   <use-google-connector-j>true</use-google-connector-j>
 </appengine-web-app>

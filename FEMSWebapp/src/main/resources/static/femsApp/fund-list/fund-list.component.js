@@ -11,7 +11,7 @@ angular.
     				}, function(error) {
     				    alert("Unable to connect to server. Please try again later");
     				});
-			        this.orderProp = 'fund.id';
+			        this.orderProp = 'fund.availableFrom';
 			        
 			        function createNewFund() {
 			        	$location.path('/funds/new');

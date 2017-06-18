@@ -1,3 +1,4 @@
+<div class="col-md-12 col-xs-12" >
  <table class="table  table-hover table-bordered table-striped">
   <thead>
       <tr>
@@ -20,11 +21,11 @@
       </tr>
        </thead>
       
-      	<tr data-toggle="collapse"  ng-repeat="transaction in $ctrl.transactions" >
-		    <td> <a ng-href="#!/transactions/{{transaction.transactionId}}"> {{transaction.transactionDate}} </a>  </td>
-		    <td> {{transaction.amount}} </td>
-		    <td> {{transaction.transactionType}} </td>
-		    <td> {{transaction.category}} </td>
+      	<tr data-toggle="collapse"  ng-repeat="transaction in $ctrl.transactions | orderBy : $ctrl.orderProp : true " >
+		    <td> <a ng-href="#!/transactions/{{transaction.transactionId}}"> {{transaction.transactionDate | date:'dd-MM-yyyy' }} </a>  </td>
+		    <td> {{transaction.amount.toLocaleString('en-in')}} </td>
+		    <td> {{transaction.transactionType.toCamelCase()}} </td>
+		    <td> {{transaction.category.toCamelCase()}} </td>
 		    
 		  <!--   <td> {{transaction.remarks}} </td>
 		  <td> <p>{{transaction.buildingArea}}</p> </td>
@@ -40,5 +41,5 @@
 		  </tr>
    </table>
 
-<button type="button" ng-click="$ctrl.createNewTransaction()" class="btn btn-primary">New</button>
-		
+<button type="button" ng-click="$ctrl.createNewTransaction()" class="btn btn-primary col-md-offset-5 col-xs-offset-5">New</button>
+</div>

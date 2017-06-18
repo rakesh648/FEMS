@@ -1,4 +1,4 @@
-
+ <div class="col-md-12 col-xs-12" >
  <table class="table  table-hover table-bordered table-striped">
   <thead>
       <tr>
@@ -10,13 +10,14 @@
       </tr>
        </thead>
       
-      	<tr ng-repeat="fund in $ctrl.funds | orderBy:$ctrl.orderProp"  >
-		    <td> <a href="#!/funds/{{fund.fund.id}}"> {{fund.fund.amount}} </a> </td>
+      	<tr ng-repeat="fund in $ctrl.funds | orderBy:$ctrl.orderProp:reverse"  >
+		    <td> <a href="#!/funds/{{fund.fund.id}}"> {{fund.fund.amount.toLocaleString('en-in')}} </a> </td>
 		    <td> <a href="#!/owners/{{fund.fund.owner.id}}"> {{fund.fund.owner.name}} </td>
-		    <td> {{fund.fund.fundSource}} </td>
+		    <td> {{fund.fund.fundSource.toCamelCase()}} </td>
 		    <!-- <td> <p>{{fund.fund.availableFrom}}</p> </td> -->
 		    <td> {{fund.fund.remarks}} </td> 
 		  </tr>
    </table>
 		
-<button type="button" ng-click="$ctrl.createNewFund()" class="btn btn-primary">New</button>
+<button type="button" ng-click="$ctrl.createNewFund()"  class="btn btn-primary col-md-offset-5 col-xs-offset-5">New</button>
+</div>

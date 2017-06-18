@@ -5,12 +5,19 @@ angular.
     controller: 
                  function MenuListController() {
     				this.modules = [
-			    	                {
+									{
+										name: 'Summary',
+										desc: 'Sammary Management',
+									    link: '/summary',
+									    order: 1
+									},
+			    	               /* {
 			    	                  name: 'Members',
 			    	                  desc: 'Member Management',
 			    	                  link: '/owners',
 			    	                  order: 1
-			    	                }, {
+			    	                }, */
+			    	               {
 			    	                	name: 'Funds',
 			    	                	desc: 'Funds Management',
 			    	                    link: '/funds',
@@ -20,13 +27,14 @@ angular.
 			    	                	desc: 'Expense Management',
 			    	                    link: '/transactions?group=expense',
 			    	                    order: 3
-			    	                },
-			    	                {
+			    	                }
+			    	                /*{
 			    	                	name: 'Plans',
 			    	                	desc: 'Plans Management',
 			    	                    link: '/transactions?group=plan',
 			    	                    order: 4
-			    	                }
+			    	                }*/
+			    	                
 			    	              ];
 			
 			        this.orderProp = 'order';

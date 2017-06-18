@@ -1,148 +1,129 @@
-
-  <form class="form-horizontal">
-	 	<div class="panel-group ">
-	 		 <div class="panel col-sm-6">
-	 		<div class="form-group " >
-				<label class="control-label col-sm-4"> Fund :</label>
-			    <div class="col-sm-6">
-				    <a class="form-control-static" href ="#!funds/{{$ctrl.transaction.fund.id}}">
-		     				<p class="form-control-static">
-		     					{{$ctrl.transaction.fund.owner.name +'-'+$ctrl.transaction.fund.fundSource+'-'+$ctrl.transaction.fund.amount}}
-		     				</p>
-		     		</a>
-			    </div>
-			   </div>
-			   
-			   <div class="form-group">
-			    <label class="control-label col-sm-4">Amount : </label>
-			    <div class="col-sm-6">
-				    <p class="form-control-static">
-		     				{{$ctrl.transaction.amount}}
-		     		</p>
-			    </div>
-			   </div>
-			   
-			    <div class="form-group">
-			    <label class="control-label col-sm-4">Date :</label>
-			    <div class="col-sm-6">
-				    <p class="form-control-static">
-		     				{{$ctrl.transaction.transactionDate}}
-		     		</p>
-			    </div>
-			   </div>
-			   
-			    <div class="form-group">
-			    <label class="control-label col-sm-4">Receiver :</label>
-			    <div class="col-sm-6">
-				    <p class="form-control-static">
-		     				{{$ctrl.transaction.receiver}}
-		     		</p>
-			    </div>
-			   </div>
-			   
-			    <div class="form-group">
-			    <label class="control-label col-sm-4">Category :</label>
-			    <div class="col-sm-6">
-		     		<p class="form-control-static">
-		     				{{$ctrl.transaction.category}}
-		     		</p>
-			    </div>
-			   </div>
-			   
-			   <div class="form-group">
-			    <label class="control-label col-sm-4">Building Area :</label>
-			    <div class="col-sm-6">
-		     		<p class="form-control-static">
-		     				{{$ctrl.transaction.buildingArea}}
-		     		</p>
-			    </div>
-			   </div>
-			   
-			    <div class="form-group">
-			    <label class="control-label col-sm-4"> Authorized By :</label>
-			    <div class="col-sm-6">
-				    <p class="form-control-static">
-		     				{{$ctrl.transaction.AuthorizedBy.name}}
-		     		</p>
-			    </div>
-			   </div>
-			   
-			   <div class="form-group">
-			    <label class="control-label col-sm-4">Status :</label>
-			    <div class="col-sm-6">
-		     		<p class="form-control-static">
-		     				{{$ctrl.transaction.status}}
-		     		</p>
-			    </div>
-			   </div>
-			   
-			   
-			   </div> <!-- end of pane1 -->
-			   
-			   <div class="panel col-sm-6">
-			   
-			   <div class="form-group">
-			    <label class="control-label col-sm-4">Type : </label>
-			    <div class="col-sm-6">
-		     		<p class="form-control-static">
-		     				{{$ctrl.transaction.transactionType}}
-		     		</p>
-			    </div>
-			   </div>		
-			   
-			   <div class="form-group">
-			    <label class="control-label col-sm-4">Bank :</label>
-			    <div class="col-sm-6">
-				    <p class="form-control-static">
-		     				{{$ctrl.transaction.bank}}
-		     		</p>
-			    </div>
-			   </div>
-			   
-			   <div class="form-group">
-			    <label class="control-label col-sm-4"> Cheque Date :</label>
-			    <div class="col-sm-6">
-				    <p class="form-control-static">
-		     				{{$ctrl.transaction.chequeDate}}
-		     		</p>
-			    </div>
-			   </div>
-			   
-			   <div class="form-group">
-			    <label class="control-label col-sm-4"> Cheque Number :</label>
-			    <div class="col-sm-6">
-				    <p class="form-control-static">
-		     				{{$ctrl.transaction.chequeNumber}}
-		     		</p>
-			    </div>
-			   </div>
-			   
-			   <div class="form-group">
-			    <label class="control-label col-sm-4"> Cheque To :</label>
-			    <div class="col-sm-6">
-				    <p class="form-control-static">
-		     				{{$ctrl.transaction.chequeTo}}
-		     		</p>
-			    </div>
-			   </div>
-			   
-			    <div class="form-group">
-			    <label class="control-label col-sm-4"> Deducted Date :</label>
-			    <div class="col-sm-6">
-				    <p class="form-control-static">
-		     				{{$ctrl.transaction.deductedOn}}
-		     		</p>
-			    </div>
-			   </div>
-			   
-			   <div class="form-group">
-			    <label class="control-label col-sm-4">Remarks :</label>
-			    <div class="col-sm-6">
-			    	<p class="form-control-static">
-		     				{{$ctrl.transaction.remarks}}
-		     		</p>
-			    </div>
-			   </div>
-		</div> 
-		</div>
-	</form>
+ <form class="form-horizontal">
+    <div class="col-md-6 col-xs-12">
+       <div class="form-group row" >
+          <label class="control-label col-md-4 col-xs-6"> Fund :</label>
+          <div class=" col-md-6 col-xs-6">
+             <a class="form-control-static" href ="#!funds/{{$ctrl.transaction.fund.id}}">
+                <p class="form-control-static">
+                   {{$ctrl.transaction.fund.owner.name +'-'+$ctrl.transaction.fund.fundSource+'-'+$ctrl.transaction.fund.amount}}
+                </p>
+             </a>
+          </div>
+       </div>
+       <div class="form-group row">
+          <label class="control-label col-md-4 col-xs-6">Amount : </label>
+          <div class="col-md-6 col-xs-6">
+             <p class="form-control-static">
+                {{$ctrl.transaction.amount.toLocaleString('en-in')}}
+             </p>
+          </div>
+       </div>
+       <div class="form-group row">
+          <label class="control-label col-md-4 col-xs-6">Date :</label>
+          <div class="col-md-6 col-xs-6">
+             <p class="form-control-static">
+                {{$ctrl.transaction.transactionDate | date:'dd-MM-yyyy'}}
+             </p>
+          </div>
+       </div>
+       <div class="form-group row">
+          <label class="control-label col-md-4 col-xs-6">Receiver :</label>
+          <div class="col-md-6 col-xs-6">
+             <p class="form-control-static">
+                {{$ctrl.transaction.receiver}}
+             </p>
+          </div>
+       </div>
+       <div class="form-group row">
+          <label class="control-label col-md-4 col-xs-6">Category :</label>
+          <div class="col-md-6 col-xs-6">
+             <p class="form-control-static">
+                {{$ctrl.transaction.category.toCamelCase()}}
+             </p>
+          </div>
+       </div>
+       <div class="form-group row">
+          <label class="control-label col-md-4 col-xs-6">Building Area :</label>
+          <div class="col-md-6 col-xs-6">
+             <p class="form-control-static">
+                {{$ctrl.transaction.buildingArea.toCamelCase()}}
+             </p>
+          </div>
+       </div>
+       <!--  <div class="form-group row">
+          <label class="control-label col-md-4 col-xs-6"> Authorized By :</label>
+          <div class="col-md-6 col-xs-6">
+           <p class="form-control-static">
+          				{{$ctrl.transaction.AuthorizedBy.name}}
+          		</p>
+          </div>
+          </div> -->
+       <div class="form-group row">
+          <label class="control-label col-md-4 col-xs-6">Status :</label>
+          <div class="col-md-6 col-xs-6">
+             <p class="form-control-static">
+                {{$ctrl.transaction.status.toCamelCase()}}
+             </p>
+          </div>
+       </div>
+    </div>
+    <!-- end of pane1 -->
+    <div class="col-md-6 col-xs-12">
+       <div class="form-group row">
+          <label class="control-label col-md-4 col-xs-6">Type : </label>
+          <div class="col-md-6 col-xs-6">
+             <p class="form-control-static">
+                {{$ctrl.transaction.transactionType.toCamelCase()}}
+             </p>
+          </div>
+       </div>
+       <div class="form-group row">
+          <label class="control-label col-md-4 col-xs-6">Bank :</label>
+          <div class="col-md-6 col-xs-6">
+             <p class="form-control-static">
+                {{$ctrl.transaction.bank}}
+             </p>
+          </div>
+       </div>
+       <div class="form-group row">
+          <label class="control-label col-md-4 col-xs-6"> Cheque Date :</label>
+          <div class="col-md-6 col-xs-6">
+             <p class="form-control-static">
+                {{$ctrl.transaction.chequeDate | date:'dd-MM-yyyy'}}
+             </p>
+          </div>
+       </div>
+       <div class="form-group row">
+          <label class="control-label col-md-4 col-xs-6"> Cheque Number :</label>
+          <div class="col-md-6 col-xs-6">
+             <p class="form-control-static">
+                {{$ctrl.transaction.chequeNumber}}
+             </p>
+          </div>
+       </div>
+       <div class="form-group row">
+          <label class="control-label col-md-4 col-xs-6"> Cheque To :</label>
+          <div class="col-md-6 col-xs-6">
+             <p class="form-control-static">
+                {{$ctrl.transaction.chequeTo}}
+             </p>
+          </div>
+       </div>
+       <div class="form-group row">
+          <label class="control-label col-md-4 col-xs-6"> Deducted Date :</label>
+          <div class="col-md-6 col-xs-6">
+             <p class="form-control-static">
+                {{$ctrl.transaction.deductedOn | date:'dd-MM-yyyy'}}
+             </p>
+          </div>
+       </div>
+       <div class="form-group row">
+          <label class="control-label col-md-4 col-xs-6">Remarks :</label>
+          <div class="col-md-6 col-xs-6">
+             <p class="form-control-static">
+                {{$ctrl.transaction.remarks}}
+             </p>
+          </div>
+       </div>
+    </div>
+ </form>

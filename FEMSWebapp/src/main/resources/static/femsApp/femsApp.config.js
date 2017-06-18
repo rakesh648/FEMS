@@ -24,6 +24,9 @@ angular.
         when('/funds/:fundId', {
             template: '<fund-detail></fund-detail>'
         }).
+        when('/funds/:fundId/transactions', {
+        	template: '<transaction-list></transaction-list>'
+        }).
         when('/transactions', {
               template: '<transaction-list></transaction-list>'
          }).
@@ -33,8 +36,11 @@ angular.
         when('/transactions/:transactionId', {
              template: '<transaction-detail></transaction-detail>'
         }).
-        otherwise('',{
-        	template: '<phone-list></phone-list>'
+        when('/summary', {
+	          template: '<summary-detail></summary-detail>'	      
+       }).
+        otherwise('/summary', {
+	          template: '<summary-detail></summary-detail>'	      
         });
       
     }

@@ -10,7 +10,9 @@ var isMobile = typeof(ionic)!=='undefined' && (ionic.Platform.is("ios") || ionic
 }*/
 var femsApp = angular.module('femsApp', [
                                          'menuList',
-                                         'ownerList',                                         
+                                         'ownerList',         
+                                         'summaryDetail',                                         
+                                         'summaryDetailService',
                                          'ownerListService',
                                          'ownerDetail',                                         
                                          'ownerDetailService',

@@ -5,7 +5,7 @@
         <groupId>com.f11.fems</groupId>
         <artifactId>webapp</artifactId>
         <packaging>jar</packaging>
-        <name>webapp</name>
+        <name>FEMS Webapp</name>
         <description>FEMS Web Application Project</description>
                 <parent>
                 <groupId>com.f11</groupId>

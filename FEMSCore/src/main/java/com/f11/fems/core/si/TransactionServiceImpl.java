@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import com.f11.fems.core.dao.TransactionDao;
 import com.f11.fems.core.entity.Fund;
 import com.f11.fems.core.entity.Transaction;
-import com.f11.fems.core.entity.type.TransactionGroup;
 import com.f11.fems.core.exception.OutOfBudgetException;
 
 @Service
@@ -58,8 +57,10 @@ public class TransactionServiceImpl implements TransactionService{
 		return transactionRepo.findByFund(fund);
 	}
 
+
 	@Override
-	public Collection<Transaction> findByTransactionGroup(TransactionGroup group) {
-		return transactionRepo.findByTransactionGroup(group);
+	public Collection<Transaction> findAll() {
+		return transactionRepo.findAll();
 	}
+
 }

@@ -5,6 +5,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Owner   {
@@ -21,6 +23,9 @@ public class Owner   {
 	@Column (nullable=false)
 	private String email;
 	
+	@ManyToOne(optional = false)
+	@JoinColumn(nullable = false)
+	OwnerGroup group;
 	
 	public Long getId() {
 		return id;
@@ -50,6 +55,14 @@ public class Owner   {
 		this.email = email;
 	}
 	
+	public OwnerGroup getGroup() {
+		return group;
+	}
+
+	public void setGroup(OwnerGroup group) {
+		this.group = group;
+	}
+
 	@Override
 	public String toString() {
 		return "Owners [ownerId=" + id + ", name=" + name + ", phone=" + phone + ", email=" + email + "]";

@@ -17,7 +17,6 @@ import javax.persistence.ManyToOne;
 
 import com.f11.fems.core.entity.type.BuildingArea;
 import com.f11.fems.core.entity.type.ExpenseCategory;
-import com.f11.fems.core.entity.type.TransactionGroup;
 import com.f11.fems.core.entity.type.TransactionStatus;
 import com.f11.fems.core.entity.type.TransactionType;
 
@@ -36,10 +35,6 @@ public abstract class Transaction {
 	@Column (name ="TRANSACTION_TYPE", insertable = false, updatable = false,nullable=false)
 	private TransactionType transactionType;
 	
-	@Column (nullable=false)
-	@Enumerated(EnumType.STRING)
-	private TransactionGroup transactionGroup;
-
 	@Enumerated(EnumType.STRING)
 	@Column (nullable=false)
 	private ExpenseCategory category;
@@ -156,11 +151,6 @@ public abstract class Transaction {
 	
 	public void setTransactionType(TransactionType transactionType) {
 		this.transactionType = transactionType;
-		this.transactionGroup = transactionType.getTransactionGroup();
 	}
-
-	public final TransactionGroup getTransactionGroup() {
-		return transactionGroup;
-	}	
 	
 }

@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,11 +25,9 @@ import com.f11.fems.core.entity.CashTransaction;
 import com.f11.fems.core.entity.ChequeTransaction;
 import com.f11.fems.core.entity.Fund;
 import com.f11.fems.core.entity.OnlineTransaction;
-import com.f11.fems.core.entity.PlannedTransaction;
 import com.f11.fems.core.entity.Transaction;
 import com.f11.fems.core.entity.type.BuildingArea;
 import com.f11.fems.core.entity.type.ExpenseCategory;
-import com.f11.fems.core.entity.type.TransactionGroup;
 import com.f11.fems.core.entity.type.TransactionStatus;
 import com.f11.fems.core.entity.type.TransactionType;
 import com.f11.fems.core.exception.OutOfBudgetException;
@@ -65,10 +62,9 @@ public class TransactionServiceControler {
 			produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
 	@ResponseBody
 	@ResponseStatus(HttpStatus.OK)
-	   public Collection<TransactionResource> getAllTransactions(@RequestParam("group") String group	) {
-		TransactionGroup transactionGroup = getTransactionGroup(group);
+	   public Collection<TransactionResource> getAllTransactions() {
 		 Collection<TransactionResource> transactionResources = new ArrayList<>();
-		 for(Transaction transaction:transactionService.findByTransactionGroup(transactionGroup)){
+		 for(Transaction transaction:transactionService.findAll()){
 			 TransactionResource transactionResource = getAdapterTransactionResource(transaction);
 			 addCommonLinks(transactionResource);
 			 transactionResources.add(transactionResource);
@@ -137,9 +133,6 @@ public class TransactionServiceControler {
 				transactionResource =  new TransactionResource((ChequeTransaction)transaction);
 			} else if (transaction instanceof CashTransaction){
 				transactionResource =  new TransactionResource((CashTransaction)transaction);
-			}
-			else if (transaction instanceof PlannedTransaction){
-				transactionResource =  new TransactionResource((PlannedTransaction)transaction);
 			}else if (transaction instanceof OnlineTransaction){
 				transactionResource =  new TransactionResource((OnlineTransaction)transaction);
 			}
@@ -150,14 +143,11 @@ public class TransactionServiceControler {
 				produces = {"application/json", "application/xml" })
 		  @ResponseBody
 		  @ResponseStatus(HttpStatus.OK)
-		  public Collection<KeyValueStoreResource> getTransactionTypes(@RequestParam(value="group", required=false) String groupString) {	
-		 	TransactionGroup group = getTransactionGroup(groupString);
+		  public Collection<KeyValueStoreResource> getTransactionTypes() {	
 		 	Collection<KeyValueStoreResource> sources = new ArrayList<>();
 		 	for(TransactionType type: TransactionType.values()){
-		 		if(group==null || type.getTransactionGroup().equals(group)){
 		 			KeyValueStoreResource store = new KeyValueStoreResource(type.name(), type.getDescription());
 					sources.add(store);
-			 	}
 			}
 			
 			return sources;
@@ -180,15 +170,11 @@ public class TransactionServiceControler {
 				produces = {"application/json", "application/xml" })
 		  @ResponseBody
 		  @ResponseStatus(HttpStatus.OK)
-		  public Collection<KeyValueStoreResource> getTransactionStatuses(@RequestParam(value="group", required=false) String groupString) {	
-		 	TransactionGroup group = getTransactionGroup(groupString);		 	
+		  public Collection<KeyValueStoreResource> getTransactionStatuses() {	
 		 	Collection<KeyValueStoreResource> sources = new ArrayList<>();
 		 	for(TransactionStatus status: TransactionStatus.values()){
-		 		if(group==null || status.getTransactionGroup().equals(group)){
 		 			KeyValueStoreResource store = new KeyValueStoreResource(status.name(), status.getDescription());
 					sources.add(store);
-		 		}
-		 			
 			 }
 		 	 return sources;
 		  }
@@ -205,18 +191,6 @@ public class TransactionServiceControler {
 			}
 			return sources;
 		  }
-	 
-	 private static TransactionGroup getTransactionGroup(String groupStr){
-		 if (groupStr==null) return null;
-		 
-		 TransactionGroup group = null;
-		 switch(groupStr.toUpperCase()){
-		 case "EXPENSE" : group = TransactionGroup.EXPENSE; break;
-		 case "PLAN" :   group = TransactionGroup.PLAN; break;
-		 }
-		 return group;
-		 
-	 }
 	 
 	 @ResponseStatus(value=HttpStatus.BAD_REQUEST)
 	 @ExceptionHandler(OutOfBudgetException.class)
@@ -236,6 +210,6 @@ public class TransactionServiceControler {
 		 if(transaction.getFund()!=null ){
 			 transactionResource.add(linkTo(methodOn(FundServiceControler.class).getFund(transaction.getFund().getId())).withRel(FUND_REL));
 		 }
-		 transactionResource.add(linkTo(methodOn(TransactionServiceControler.class).getAllTransactions("")).withRel(ALL_TRANSACTION_REL));
+		 transactionResource.add(linkTo(methodOn(TransactionServiceControler.class).getAllTransactions()).withRel(ALL_TRANSACTION_REL));
 	}
 }

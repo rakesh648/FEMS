@@ -12,11 +12,9 @@ import com.f11.fems.core.entity.ChequeTransaction;
 import com.f11.fems.core.entity.Fund;
 import com.f11.fems.core.entity.OnlineTransaction;
 import com.f11.fems.core.entity.Owner;
-import com.f11.fems.core.entity.PlannedTransaction;
 import com.f11.fems.core.entity.Transaction;
 import com.f11.fems.core.entity.type.BuildingArea;
 import com.f11.fems.core.entity.type.ExpenseCategory;
-import com.f11.fems.core.entity.type.TransactionGroup;
 import com.f11.fems.core.entity.type.TransactionStatus;
 import com.f11.fems.core.entity.type.TransactionType;
 
@@ -26,8 +24,6 @@ public class TransactionResource extends ResourceSupport{
 	
 	@NotNull
 	TransactionType transactionType;
-	
-	TransactionGroup transactionGroup;
 	
 	@NotNull
 	ExpenseCategory category;
@@ -74,7 +70,6 @@ public class TransactionResource extends ResourceSupport{
 	public void addCommonElements(Transaction transaction){
 		this.transactionId = transaction.getId();
 		this.transactionType = transaction.getTransactionType();
-		this.transactionGroup = transaction.getTransactionGroup();
 		this.category = transaction.getCategory();
 		this.buildingArea = transaction.getBuildingArea();
 		this.fund = transaction.getFund();
@@ -99,10 +94,6 @@ public class TransactionResource extends ResourceSupport{
 		this.deductedOn = transaction.getDeductedOn();
 	}
 
-	public TransactionResource(PlannedTransaction transaction){
-		addCommonElements(transaction);
-	}
-	
 	public TransactionResource(OnlineTransaction transaction){
 		addCommonElements(transaction);
 	}
@@ -129,9 +120,6 @@ public class TransactionResource extends ResourceSupport{
 			case ONLINE : OnlineTransaction onlineTransaction = new OnlineTransaction(); 
 			 				transaction = onlineTransaction;
 			 				break;
-			case PLAN : PlannedTransaction plannedTransaction = new PlannedTransaction(); 
-							transaction = plannedTransaction;
-							break;
 			default:
 				break;
 		}	
@@ -272,8 +260,5 @@ public class TransactionResource extends ResourceSupport{
 		this.transactionType = transactionType;
 	}
 
-	public TransactionGroup getTransactionGroup() {
-		return transactionGroup;
-	}
 
 }

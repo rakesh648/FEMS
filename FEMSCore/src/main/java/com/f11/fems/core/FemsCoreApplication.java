@@ -40,7 +40,7 @@ public class FemsCoreApplication implements CommandLineRunner {
 	        owner.setName("Test");
 	        owner.setEmail("email");
 	        owner.setPhone("1234");
-	        customerRepository.save(owner);
+	        //customerRepository.save(owner);
 
 	        System.out.println("Done!");
 

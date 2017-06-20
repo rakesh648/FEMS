@@ -2,29 +2,20 @@ package com.f11.fems.core.entity.type;
 
 public enum TransactionStatus {
 	
-	INITIATED("Initiated",TransactionGroup.EXPENSE), 
-	PROCESSED("Processed",TransactionGroup.EXPENSE),
-	PLANNED("Planned",TransactionGroup.PLAN),
-	EXECUTED("Executed",TransactionGroup.PLAN);
+	INITIATED("Initiated"), 
+	PROCESSED("Processed"),
+	PLANNED("Planned"),
+	EXECUTED("Executed");
 	
 	private String description;
-	private TransactionGroup transactionGroup;
 	
-	TransactionStatus(String desc, TransactionGroup transactionGroup){
+	TransactionStatus(String desc){
 		this.description = desc;
-		this.transactionGroup = transactionGroup;
 	}
 	
 	public String getDescription(){
 		return description;
 	}
 
-	public TransactionGroup getTransactionGroup() {
-		return transactionGroup;
-	}
-
-	public void setTransactionGroup(TransactionGroup transactionGroup) {
-		this.transactionGroup = transactionGroup;
-	}
 
 }

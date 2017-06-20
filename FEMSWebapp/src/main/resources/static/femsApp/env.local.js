@@ -14,13 +14,18 @@
   window.__env.transactionListApiUrl = window.__env.apiUrl+'/transactions';
   window.__env.transactionDetailApiUrl = window.__env.apiUrl+'/transactions/:transactionId';
   
+  window.__env.planListApiUrl = window.__env.apiUrl+'/plans';
+  window.__env.planDetailApiUrl = window.__env.apiUrl+'/plans/:planId';
+  
   window.__env.fundSourceApiUrl = window.__env.apiUrl+'/funds/sources/';
   window.__env.transactionTypeApiUrl = window.__env.apiUrl+'/transactions/types/';
   window.__env.transactionStatusApiUrl = window.__env.apiUrl+'/transactions/statuses/';
   window.__env.transactionCategoryApiUrl = window.__env.apiUrl+'/transactions/categories/';
   window.__env.buildingAreaApiUrl = window.__env.apiUrl+'/buildingareas/';
   
-  window.__env.summaryDetailServiceUrl = window.__env.apiUrl+'/funds/summary/';
+  window.__env.fundSummaryDetailServiceUrl = window.__env.apiUrl+'/funds/summary/';
+  window.__env.planSummaryDetailServiceUrl = window.__env.apiUrl+'/plans/summary/';
+  window.__env.contributionSummaryDetailServiceUrl = window.__env.apiUrl+'/summary/contribution'
   
 
   // Whether or not to enable debug mode

@@ -1,7 +1,7 @@
 angular.
   module('ownerDetail').
   component('ownerDetail', {
-    templateUrl: 'owner-detail/owner-detail.template.html',
+    templateUrl: './femsApp/owner-detail/owner-detail.template.html',
     controller: ['$routeParams', 'ownerDetailService','$resource',
                  function OwnerDetailController($routeParams, ownerDetailService ,$resource) {	   
 			        var self = this;			        

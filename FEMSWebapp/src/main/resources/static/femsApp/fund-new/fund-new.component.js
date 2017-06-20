@@ -2,7 +2,7 @@
 angular.
   module('fundNew').
   component('fundNew', {
-    templateUrl: 'fund-new/fund-new.template.html',
+    templateUrl: './femsApp/fund-new/fund-new.template.html',
     controller: ['$routeParams', '$location','ownerListService','fundListService','fundSourceService',
                  function FundNewController($routeParams,$location, ownerListService, fundListService,fundSourceService ) {	   			          				
     				this.fund = new Object();

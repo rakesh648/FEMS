@@ -2,7 +2,7 @@
 angular.
   module('ownerNew').
   component('ownerNew', {
-    templateUrl: 'owner-new/owner-new.template.html',
+    templateUrl: './femsApp/owner-new/owner-new.template.html',
     controller: ['$routeParams', '$location','ownerListService',
                  function OwnerNewController($routeParams,$location, ownerListService ) {	   			          				
     				this.owner = null;

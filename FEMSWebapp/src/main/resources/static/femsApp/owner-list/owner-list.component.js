@@ -2,7 +2,7 @@
 angular.
   module('ownerList').
   component('ownerList', {
-    templateUrl: 'owner-list/owner-list.template.html',
+    templateUrl: './femsApp/owner-list/owner-list.template.html',
     controller: ['$routeParams', '$location', 'ownerListService',
                  function OwnerListController($routeParams, $location, ownerListService ) {	   
 			        

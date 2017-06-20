@@ -2,7 +2,7 @@
 angular.
   module('fundList').
   component('fundList', {
-    templateUrl: 'fund-list/fund-list.template.html',
+    templateUrl: './femsApp/fund-list/fund-list.template.html',
     controller: ['$routeParams', '$location','fundListService',
                  function FundListController($routeParams,$location, fundListService ) {	   
 			        

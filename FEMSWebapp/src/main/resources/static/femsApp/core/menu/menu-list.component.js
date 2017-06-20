@@ -1,7 +1,7 @@
 angular.
   module('menuList').
   component('menuList', {
-    templateUrl: 'core/menu/menu-list.template.html',
+    templateUrl: './femsApp/core/menu/menu-list.template.html',
     controller: 
                  function MenuListController() {
     				this.modules = [
@@ -25,15 +25,15 @@ angular.
 			    	                }, {
 			    	                	name: 'Expense',
 			    	                	desc: 'Expense Management',
-			    	                    link: '/transactions?group=expense',
+			    	                    link: '/transactions',
 			    	                    order: 3
-			    	                }
-			    	                /*{
+			    	                },
+			    	                {
 			    	                	name: 'Plans',
-			    	                	desc: 'Plans Management',
-			    	                    link: '/transactions?group=plan',
+			    	                	desc: 'Plan Management',
+			    	                    link: '/plans',
 			    	                    order: 4
-			    	                }*/
+			    	                }
 			    	                
 			    	              ];
 			

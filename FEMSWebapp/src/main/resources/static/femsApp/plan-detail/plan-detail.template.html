@@ -1,0 +1,50 @@
+ <form class="form-horizontal">
+    <div class="col-md-12 col-xs-12">
+       <div class="form-group row" >
+          <label class="control-label col-md-4 col-xs-6"> Name :</label>
+          <div class=" col-md-6 col-xs-6">
+             <a class="form-control-static" href ="#!plans/{{$ctrl.planId}}">
+                <p class="form-control-static">
+                   {{$ctrl.plan.name}}
+                </p>
+             </a>
+          </div>
+       </div>
+       <div class="form-group row">
+          <label class="control-label col-md-4 col-xs-6">Amount : </label>
+          <div class="col-md-6 col-xs-6">
+             <p class="form-control-static">
+                {{$ctrl.plan.amount.toLocaleString('en-in')}}
+             </p>
+          </div>
+       </div>
+       
+       <div class="form-group row">
+          <label class="control-label col-md-4 col-xs-6">Category :</label>
+          <div class="col-md-6 col-xs-6">
+             <p class="form-control-static">
+                {{$ctrl.plan.category.toCamelCase()}}
+             </p>
+          </div>
+       </div>
+       <div class="form-group row">
+          <label class="control-label col-md-4 col-xs-6">Building Area :</label>
+          <div class="col-md-6 col-xs-6">
+             <p class="form-control-static">
+                {{$ctrl.plan.buildingArea.toCamelCase()}}
+             </p>
+          </div>
+       </div>
+       
+        <div class="form-group row">
+          <label class="control-label col-md-4 col-xs-6">Remarks :</label>
+          <div class="col-md-6 col-xs-6">
+             <p class="form-control-static">
+                {{$ctrl.plan.remarks}}
+             </p>
+          </div>
+       </div>
+       
+    </div>
+    
+ </form>

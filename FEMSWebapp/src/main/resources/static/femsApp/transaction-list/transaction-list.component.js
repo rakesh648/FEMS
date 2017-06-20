@@ -1,12 +1,12 @@
 angular.
   module('transactionList').
   component('transactionList', {
-    templateUrl: 'transaction-list/transaction-list.template.html',
+    templateUrl: './femsApp/transaction-list/transaction-list.template.html',
     controller: ['$routeParams', 'transactionListService','$resource','$location',
                  function TransactionListController($routeParams, transactionListService,$resource ,$location) {
 			    	var url = $location.url();
 					if(url.startsWith('/transactions')){
-						this.transactions = transactionListService.all.query({group: $routeParams.group},
+						this.transactions = transactionListService.all.query({},
 				        		function(data) {
 	    				    // success handler
 	    				}, function(error) {

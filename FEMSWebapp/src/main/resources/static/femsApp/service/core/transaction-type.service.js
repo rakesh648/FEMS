@@ -5,7 +5,6 @@ angular.
                      return $resource(env.transactionTypeApiUrl , {}, {
                        query: {
                          method: 'GET',
-                         params: {group: $routeParams.group},
                          isArray: true                         
                        }
                      });

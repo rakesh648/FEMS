@@ -1,7 +1,7 @@
 angular.
   module('transactionNew').
   component('transactionNew', {
-    templateUrl: 'transaction-new/transaction-new.template.html',
+    templateUrl: './femsApp/transaction-new/transaction-new.template.html',
     controller: ['$routeParams', 
                  '$location',
                  'transactionListService',
@@ -25,8 +25,8 @@ angular.
     				this.transaction.chequeDate= new Date();
     				this.transaction.deductedOn= new Date();
     				this.transaction.status= 'INITITATED';
-    				this.transactionTypes = transactionTypeService.query({group:$routeParams.group});
-    				this.transactionStatuses = transactionStatusService.query({group:$routeParams.group});
+    				this.transactionTypes = transactionTypeService.query();
+    				this.transactionStatuses = transactionStatusService.query();
     				this.transactionCategories = transactionCategoryService.query();
     				this.buildingAreas = buildingAreaService.query(function(data) {
     				    // success handler
@@ -37,7 +37,7 @@ angular.
     				
     				function saveNewTransaction() {
     					this.saveDisabled = true;
-    					transactionListService.save(this.transaction,function(data) {
+    					transactionListService.newTransaction.save(this.transaction,function(data) {
 			        	    $location.path('/transactions/'+data.transactionId);
 			        	}, function(error) {
 	    				    alert("Unable to connect to server. Please try again later");

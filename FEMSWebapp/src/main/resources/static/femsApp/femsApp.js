@@ -27,6 +27,13 @@ var femsApp = angular.module('femsApp', [
                                          'transactionDetail',                               
                                          'transactionDetailService',
                                          'transactionNew',
+                                         
+                                         'planList',                                         
+                                         'planListService',
+                                         'planDetail',                               
+                                         'planDetailService',
+                                         'planNew',
+                                         
                                          'fundSourceService',
                                          'transactionTypeService',
                                          'transactionStatusService',

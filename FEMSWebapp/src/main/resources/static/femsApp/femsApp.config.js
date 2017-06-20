@@ -36,6 +36,16 @@ angular.
         when('/transactions/:transactionId', {
              template: '<transaction-detail></transaction-detail>'
         }).
+        
+        when('/plans', {
+            template: '<plan-list></plan-list>'
+        }).
+        when('/plans/new', {
+           template: '<plan-new></plan-new>'
+        }).
+        when('/plans/:planId', {
+           template: '<plan-detail></plan-detail>'
+        }).
         when('/summary', {
 	          template: '<summary-detail></summary-detail>'	      
        }).

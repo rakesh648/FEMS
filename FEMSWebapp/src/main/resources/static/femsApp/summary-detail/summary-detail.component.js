@@ -33,7 +33,7 @@ angular.
 				        		graphObject.saving.expense = data[i].fundConsumed;
 				        		graphObject.saving.available = data[i].fundRemaining;
 		        			}
-		        			if(data[i].source =='OTHERS'){
+		        			if(data[i].source =='OTHERS' || data[i].source =='OTHER' ){
 		        				graphObject.others.fund = data[i].fundAmount;
 				        		graphObject.others.expense = data[i].fundConsumed;
 				        		graphObject.others.available = data[i].fundRemaining;

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+create or replace view TOTAL_LOAN as 
+select 'LOAN' as 'key', 'Bank' as 'group_name', sum(amount) as 'val'
+    from fund
+   where fund_source = 'LOAN';
+   
+
+create or replace view TOTAL_GIFT as
+ select 'GIFT' as 'key', g.name 'group_name', sum(f.amount) as 'val'
+    from fund f
+   inner join owner o
+      on f.owner_id = o.id
+   inner join owner_group g
+      on g.id = o.group_id
+   where fund_source <> 'LOAN'
+     and g.is_gift_contributor = 'Y'
+   group by g.name;
+   
+  create or replace view  TOTAL_INVESTMENT_REQUIRED as
+ select (select sum(amount) as 'project_cost' from planned_expense) -
+         (select val from TOTAL_LOAN) -
+         (select sum(f.amount) as gift
+            from fund f
+           inner join owner o
+              on f.owner_id = o.id
+           inner join owner_group g
+              on g.id = o.group_id
+           where fund_source <> 'LOAN'
+             and g.is_gift_contributor = 'Y') as inv_req
+    from dual;
+    
+     create or replace view GROUP_INVESTMENT_REQUIRED as      
+   select g.id, g.name, (req.inv_req) /  (select count(id)  from owner_group g where g.is_gift_contributor = 'N' ) as 'inv_req_group'
+    from TOTAL_INVESTMENT_REQUIRED req
+   cross join OWNER_GROUP g
+   where IS_GIFT_CONTRIBUTOR = 'N';
+   
+   
+       create or replace view GROUP_INVESTMENT_DONE as
+ select 'INV_DONE' as 'key', g.id, g.name as 'group_name', sum(f.amount) as 'val'
+    from fund f
+   inner join owner o
+      on f.owner_id = o.id
+   inner join owner_group g
+      on g.id = o.group_id
+   where fund_source <> 'LOAN'
+     and g.is_gift_contributor = 'N'
+   group by g.id, g.name;
+   
+   
+             
+   
+  create or replace view  SUMMARY as
+  SELECT `key`,`group_name`,`val` FROM TOTAL_LOAN
+UNION
+SELECT `key`,`group_name`,`val`
+FROM TOTAL_GIFT
+UNION
+SELECT `key`,`group_name`,`val`
+FROM GROUP_INVESTMENT_DONE
+UNION
+SELECT 'INV_REM' as 'key',
+       r.name 'group_name',
+       IF(r.inv_req_group>d.val , r.inv_req_group - d.val,0)  as 'val'
+  FROM GROUP_INVESTMENT_REQUIRED r
+  left join GROUP_INVESTMENT_DONE d
+    on r.id = d.id;
+  
+
+
+CREATE OR REPLACE VIEW q_summary_contribution AS
+SELECT CONCAT(`key`,'-',`group_name`)  as 'id', `key`, `group_name`, `val`
+FROM SUMMARY
+order by `group_name`,`key`,`val`;
